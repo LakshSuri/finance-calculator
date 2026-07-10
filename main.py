@@ -1,3 +1,5 @@
+import calculator
+
 print("Finance Calculator")
 print(" ")
 print("1. Calculate future investment value")
@@ -10,24 +12,20 @@ if choice == "1":
     return_rate = float(input("Expected yearly return (%): "))
     years = int(input("Number of years: "))
 
-    growth = (1 + return_rate / 100) ** years
-    future_amount = amount * growth
+    result = calculator.future_value(amount, return_rate, years)
 
     print()
-    print(f"After {years} years, your investment could be worth ${future_amount:,.2f}")
+    print(f"After {years} years, your investment could be worth ${result:,.2f}")
 
 elif choice == "2":
     monthly_amount = float(input("Monthly contribution: "))
     return_rate = float(input("Expected yearly return (%): "))
     years = int(input("Number of years: "))
 
-    monthly_rate = (return_rate / 100) / 12
-    months = years * 12
-
-    future_amount = monthly_amount * (((1 + monthly_rate) ** months - 1) / monthly_rate)
+    result = calculator.future_value_monthly(monthly_amount, return_rate, years)
 
     print()
-    print(f"After {years} years, your investment could be worth ${future_amount:,.2f}")
+    print(f"After {years} years, your investment could be worth ${result:,.2f}")
 
 else:
     print("Please choose a valid option.")
