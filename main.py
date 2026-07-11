@@ -1,5 +1,25 @@
 import calculator
 
+
+def get_number(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Please enter a valid number.")
+
+
+def get_years(prompt):
+    while True:
+        try:
+            years = int(input(prompt))
+            if years > 0:
+                return years
+            print("Please enter a number greater than 0.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+
 while True:
     print()
     print("Finance Calculator")
@@ -12,9 +32,9 @@ while True:
     choice = input("Choose an option: ")
 
     if choice == "1":
-        amount = float(input("Starting investment amount: "))
-        return_rate = float(input("Expected yearly return (%): "))
-        years = int(input("Number of years: "))
+        amount = get_number("Starting investment amount: ")
+        return_rate = get_number("Expected yearly return (%): ")
+        years = get_years("Number of years: ")
 
         result = calculator.future_value(amount, return_rate, years)
 
@@ -22,9 +42,9 @@ while True:
         print(f"After {years} years, your investment could be worth ${result:,.2f}")
 
     elif choice == "2":
-        monthly_amount = float(input("Monthly contribution: "))
-        return_rate = float(input("Expected yearly return (%): "))
-        years = int(input("Number of years: "))
+        monthly_amount = get_number("Monthly contribution: ")
+        return_rate = get_number("Expected yearly return (%): ")
+        years = get_years("Number of years: ")
 
         result = calculator.future_value_monthly(monthly_amount, return_rate, years)
 
@@ -32,9 +52,9 @@ while True:
         print(f"After {years} years, your investment could be worth ${result:,.2f}")
 
     elif choice == "3":
-        goal_amount = float(input("Goal amount: "))
-        return_rate = float(input("Expected yearly return (%): "))
-        years = int(input("Number of years: "))
+        goal_amount = get_number("Goal amount: ")
+        return_rate = get_number("Expected yearly return (%): ")
+        years = get_years("Number of years: ")
 
         result = calculator.monthly_investment_goal(goal_amount, return_rate, years)
 
