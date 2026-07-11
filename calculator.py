@@ -1,9 +1,11 @@
 def future_value(amount, return_rate, years):
+    # Calculates how much a one-time investment grows over time
     growth = (1 + return_rate / 100) ** years
     return amount * growth
 
 
 def future_value_monthly(monthly_amount, return_rate, years):
+    # Calculates future value when adding money every month
     monthly_rate = (return_rate / 100) / 12
     months = years * 12
 
@@ -16,6 +18,7 @@ def future_value_monthly(monthly_amount, return_rate, years):
 
 
 def monthly_investment_goal(goal_amount, return_rate, years):
+    # Calculates the monthly amount needed to reach a target value
     monthly_rate = (return_rate / 100) / 12
     months = years * 12
 
