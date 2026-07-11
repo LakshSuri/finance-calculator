@@ -20,6 +20,18 @@ def get_years(prompt):
             print("Please enter a valid number.")
 
 
+def continue_calculating():
+    while True:
+        answer = input("\nWould you like to make another calculation? (y/n): ")
+
+        if answer.lower() == "y":
+            return True
+        elif answer.lower() == "n":
+            return False
+        else:
+            print("Please enter y or n.")
+
+
 while True:
     print()
     print("Finance Calculator")
@@ -62,14 +74,13 @@ while True:
         print(f"You would need to invest about ${result:,.2f} each month.")
 
     elif choice == "4":
-        print("Thanks for using Finance Calculator!")
+        print("Thanks for using the Finance Calculator!")
         break
 
     else:
         print("Please choose a valid option.")
+        continue
 
-    again = input("\nWould you like to make another calculation? (y/n): ")
-
-    if again.lower() != "y":
-        print("Thanks for using Finance Calculator!")
+    if not continue_calculating():
+        print("Thanks for using the Finance Calculator!")
         break
