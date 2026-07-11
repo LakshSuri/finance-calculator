@@ -1,4 +1,5 @@
 import calculator
+import history
 
 
 def get_number(prompt):
@@ -39,7 +40,8 @@ while True:
     print("1. Calculate future investment value")
     print("2. Calculate value with monthly contributions")
     print("3. Calculate monthly investment needed to reach a goal")
-    print("4. Exit")
+    print("4. View calculation history")
+    print("5. Exit")
 
     choice = input("Choose an option: ")
 
@@ -49,6 +51,16 @@ while True:
         years = get_years("Number of years: ")
 
         result = calculator.future_value(amount, return_rate, years)
+
+        calculation = (
+            f"Future Value\n"
+            f"Starting amount: ${amount:,.2f}\n"
+            f"Return: {return_rate}%\n"
+            f"Years: {years}\n"
+            f"Result: ${result:,.2f}\n"
+        )
+
+        history.save_history(calculation)
 
         print()
         print(f"After {years} years, your investment could be worth ${result:,.2f}")
@@ -60,6 +72,16 @@ while True:
 
         result = calculator.future_value_monthly(monthly_amount, return_rate, years)
 
+        calculation = (
+            f"Monthly Contributions\n"
+            f"Monthly amount: ${monthly_amount:,.2f}\n"
+            f"Return: {return_rate}%\n"
+            f"Years: {years}\n"
+            f"Result: ${result:,.2f}\n"
+        )
+
+        history.save_history(calculation)
+
         print()
         print(f"After {years} years, your investment could be worth ${result:,.2f}")
 
@@ -70,10 +92,23 @@ while True:
 
         result = calculator.monthly_investment_goal(goal_amount, return_rate, years)
 
+        calculation = (
+            f"Goal Calculator\n"
+            f"Goal amount: ${goal_amount:,.2f}\n"
+            f"Return: {return_rate}%\n"
+            f"Years: {years}\n"
+            f"Monthly investment needed: ${result:,.2f}\n"
+        )
+
+        history.save_history(calculation)
+
         print()
         print(f"You would need to invest about ${result:,.2f} each month.")
 
     elif choice == "4":
+        history.view_history()
+
+    elif choice == "5":
         print("Thanks for using the Finance Calculator!")
         break
 
