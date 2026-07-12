@@ -47,3 +47,30 @@ def create_bar_chart(starting_amount, return_rate, years):
     plt.ylabel("Investment Value ($)")
 
     plt.show()
+
+
+def create_return_comparison_chart(starting_amount, years):
+    rates = [5, 7, 10]
+
+    for rate in rates:
+        yearly_values, values = calculate_yearly_growth(
+            starting_amount,
+            rate,
+            years
+        )
+
+        plt.plot(
+            yearly_values,
+            values,
+            marker="o",
+            label=f"{rate}% Return"
+        )
+
+    plt.title("Investment Return Comparison")
+    plt.xlabel("Years")
+    plt.ylabel("Investment Value ($)")
+
+    plt.legend()
+    plt.grid(True)
+
+    plt.show()

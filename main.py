@@ -61,15 +61,13 @@ while True:
 
         result = calculator.future_value(amount, return_rate, years)
 
-        calculation = (
-            "Investment Growth Projection\n"
+        history.save_history(
+            f"Investment Growth Projection\n"
             f"Starting amount: ${amount:,.2f}\n"
             f"Return: {return_rate}%\n"
             f"Years: {years}\n"
             f"Result: ${result:,.2f}\n"
         )
-
-        history.save_history(calculation)
 
         print()
         print(f"After {years} years, your investment could be worth ${result:,.2f}")
@@ -86,15 +84,13 @@ while True:
             years
         )
 
-        calculation = (
-            "Monthly Contribution Planner\n"
+        history.save_history(
+            f"Monthly Contribution Planner\n"
             f"Monthly contribution: ${monthly_amount:,.2f}\n"
             f"Return: {return_rate}%\n"
             f"Years: {years}\n"
             f"Result: ${result:,.2f}\n"
         )
-
-        history.save_history(calculation)
 
         print()
         print(f"After {years} years, your investment could be worth ${result:,.2f}")
@@ -111,15 +107,13 @@ while True:
             years
         )
 
-        calculation = (
-            "Financial Goal Planner\n"
+        history.save_history(
+            f"Financial Goal Planner\n"
             f"Goal amount: ${goal_amount:,.2f}\n"
             f"Return: {return_rate}%\n"
             f"Years: {years}\n"
             f"Monthly investment needed: ${result:,.2f}\n"
         )
-
-        history.save_history(calculation)
 
         print()
         print(f"You would need to invest about ${result:,.2f} each month.")
@@ -135,14 +129,15 @@ while True:
         print("-------------------------")
         print("[1] Growth Line Chart")
         print("[2] Yearly Growth Bar Chart")
+        print("[3] Return Rate Comparison")
 
         chart_choice = input("\nChoose visualization: ")
 
-        amount = get_number("Starting investment amount: ")
-        return_rate = get_number("Expected yearly return (%): ")
-        years = get_years("Number of years: ")
-
         if chart_choice == "1":
+            amount = get_number("Starting investment amount: ")
+            return_rate = get_number("Expected yearly return (%): ")
+            years = get_years("Number of years: ")
+
             visualization.create_growth_chart(
                 amount,
                 return_rate,
@@ -150,9 +145,22 @@ while True:
             )
 
         elif chart_choice == "2":
+            amount = get_number("Starting investment amount: ")
+            return_rate = get_number("Expected yearly return (%): ")
+            years = get_years("Number of years: ")
+
             visualization.create_bar_chart(
                 amount,
                 return_rate,
+                years
+            )
+
+        elif chart_choice == "3":
+            amount = get_number("Starting investment amount: ")
+            years = get_years("Number of years: ")
+
+            visualization.create_return_comparison_chart(
+                amount,
                 years
             )
 
