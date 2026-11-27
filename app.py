@@ -1080,6 +1080,13 @@ def main():
             "Reproducible calculations."
         )
 
+        st.caption("RESOURCES")
+
+        st.markdown(
+            "[Coding Journey — Portfolio Hub]"
+            "(https://github.com/LakshSuri/coding-journey)"
+        )
+
         st.markdown(
             "[GitHub repository]"
             "(https://github.com/LakshSuri/finance-calculator)"
