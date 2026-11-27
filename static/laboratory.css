@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Research Display';
+  src: url('./app/static/barlow-condensed.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+[data-testid="stMainBlockContainer"] {
+  max-width: 86rem;
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+}
+[data-testid="stMain"] h1, [data-testid="stMain"] h2,
+[data-testid="stSidebar"] h1, [data-testid="stMetricValue"] {
+  font-family: 'Research Display', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+[data-testid="stMain"] h1 {
+  max-width: 18ch;
+  font-size: clamp(3.1rem, 6.4vw, 6.7rem);
+  line-height: .98;
+  padding-block: .18em .10em;
+}
+[data-testid="stMain"] h2 { font-size: clamp(2rem, 3vw, 3.4rem); }
+[data-testid="stSidebar"] { border-right: 1px solid #484a40; }
+[data-testid="stMetric"] {
+  border-top: 2px solid #79513e;
+  padding: .75rem .25rem .4rem 0;
+}
+[data-testid="stMetricLabel"] { color: #c3c6b7; }
+[data-testid="stMetricValue"] {
+  font-size: clamp(1.8rem, 3.3vw, 3.65rem);
+  font-variant-numeric: tabular-nums;
+}
+[data-testid="stCaptionContainer"] { color:#bdc0b0; }
+[data-testid="stMain"] a { text-underline-offset: .22em; }
+[data-testid="stMain"] [data-testid="stButton"] button:focus-visible,
+[data-testid="stMain"] a:focus-visible {
+  outline: 3px solid #ffac83; outline-offset: 3px;
+}
+[data-testid="stPlotlyChart"] { border-radius: .5rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .st-key-study-a .scatterlayer { animation: research-trace-a .85s ease-out both; }
+  .st-key-study-b .scatterlayer { animation: research-trace-b .85s ease-out both; }
+  @keyframes research-trace-a {
+    from { clip-path: inset(-16px 100% -16px -10px); }
+    to { clip-path: inset(-16px -16px -16px -10px); }
+  }
+  @keyframes research-trace-b {
+    from { clip-path: inset(-16px 100% -16px -10px); }
+    to { clip-path: inset(-16px -16px -16px -10px); }
+  }
+}
+@media (max-width: 650px) {
+  [data-testid="stMainBlockContainer"] { padding-top: 2.5rem; }
+}

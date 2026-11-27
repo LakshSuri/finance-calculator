@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -16,14 +18,14 @@ st.set_page_config(
 
 
 COLORS = {
-    "background": "#0B1016",
-    "surface": "#141C25",
-    "primary": "#69D3B5",
-    "secondary": "#639CC9",
-    "accent": "#D6B77A",
-    "text": "#E5E9EF",
-    "muted": "#94A3B8",
-    "grid": "#293440"
+    "background": "#191A17",
+    "surface": "#23251F",
+    "primary": "#FF925F",
+    "secondary": "#99BCE8",
+    "accent": "#A5D5BD",
+    "text": "#F1EFE7",
+    "muted": "#BDC2B3",
+    "grid": "#44473D"
 }
 
 
@@ -122,6 +124,36 @@ def overview_page():
         )
     )
 
+    st.subheader("A deposit, repeated")
+    st.write(
+        "Follow a $1,000 opening balance and $100 deposited at the "
+        "end of each month. Change the annual rate to compare the "
+        "amount deposited with the purchasing power it produces."
+    )
+    annual_rate = st.select_slider(
+        "Effective annual growth",
+        options=[-5, 0, 3, 5, 7, 10],
+        value=5,
+        format_func=lambda rate: f"{rate}%",
+        key="overview_growth"
+    )
+    records = visualization.calculate_projection_data(
+        1000, 100, annual_rate, 20, 2
+    )
+    frame = pd.DataFrame(records)
+    if st.button("Replay projection", key="replay_projection"):
+        st.session_state["projection_take"] = not st.session_state.get(
+            "projection_take", False
+        )
+    take = "b" if st.session_state.get("projection_take") else "a"
+    with st.container(key=f"study-{take}"):
+        render_growth_chart(frame)
+    st.caption(
+        f"Year 20 · nominal balance {currency(frame.iloc[-1]['nominal_future_value'])} "
+        f"· purchasing power {currency(frame.iloc[-1]['inflation_adjusted_value'])} "
+        "at 2% annual inflation. Hover over a year to inspect all three series."
+    )
+
     columns = st.columns(4)
 
     columns[0].metric(
@@ -180,22 +212,6 @@ def overview_page():
                 "Review model equations, numerical stability, "
                 "validation methods and analytical limitations."
             )
-
-    st.subheader("Illustrative projection")
-
-    records = visualization.calculate_projection_data(
-        1000, 100, 5, 20, 2
-    )
-
-    frame = pd.DataFrame(records)
-
-    render_growth_chart(frame)
-
-    st.caption(
-        "Synthetic example: $1,000 principal, "
-        "$100 monthly contribution, 5% effective annual "
-        "growth and 2% annual inflation."
-    )
 
     st.info(
         "All calculations are deterministic educational "
@@ -266,7 +282,8 @@ def render_growth_chart(frame):
         "Calculated value"
     )
 
-    st.plotly_chart(figure)
+    figure.update_layout(hovermode="x unified")
+    st.plotly_chart(figure, theme=None, config={"displaylogo": False})
 
 
 def render_breakdown_chart(frame):
@@ -1051,6 +1068,8 @@ def methodology_page():
 
 
 def main():
+    st.html(Path(__file__).resolve().parent / "static" / "laboratory.css")
+
     with st.sidebar:
         st.caption("QUANTITATIVE FINANCE")
         st.title("Finance Calculator")
