@@ -9,7 +9,7 @@ An interactive financial mathematics application for studying compound growth, p
 
 The project combines a validated Python mathematical engine, a command-line application, an interactive Streamlit website, and reproducible analytical visualizations.
 
-**[Example Dataset](examples/example_scenarios.csv) · [Analytical Figures](examples/) · [Mathematical Framework](#mathematical-framework) · [Releases](https://github.com/LakshSuri/finance-calculator/releases) · [Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml) · [Security Policy](SECURITY.md)**
+**[Coding Journey — Portfolio Hub](https://github.com/LakshSuri/coding-journey) · [Example Dataset](examples/example_scenarios.csv) · [Analytical Figures](examples/) · [Mathematical Framework](#mathematical-framework) · [Releases](https://github.com/LakshSuri/finance-calculator/releases) · [Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml) · [Security Policy](SECURITY.md)**
 
 ## Overview
 
@@ -657,10 +657,10 @@ These enhancements are planned rather than currently implemented.
 
 ## Related Projects
 
+- [Coding Journey — Portfolio Hub](https://github.com/LakshSuri/coding-journey)
 - [Derivatives Pricing Laboratory](https://github.com/LakshSuri/derivatives-pricing-lab)
 - [Interactive Derivatives Pricing Application](https://derivatives-research-lab.streamlit.app)
 - [Monte Carlo Simulator](https://github.com/LakshSuri/monte-carlo-simulator)
-- [Coding Journey](https://github.com/LakshSuri/coding-journey)
 
 ## License
 
