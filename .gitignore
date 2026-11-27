@@ -1,5 +1,46 @@
+# Python
 __pycache__/
-*.pyc
-.vscode/
-calculation_history.txt
+*.py[cod]
+*$py.class
+
+# Virtual environments
 .venv/
+venv/
+env/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Development tools
+.vscode/
+.idea/
+.mypy_cache/
+.ruff_cache/
+
+# macOS
+.DS_Store
+
+# Local calculation records
+calculation_history.txt
+
+# Local exports
+exports/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+*.tmp
+*.log

@@ -46,10 +46,14 @@ jobs:
             visualization.py \
             scenario_analysis.py \
             scenario_visualization.py \
+            app.py \
             tests
 
-      - name: Execute automated tests
-        run: python -m pytest -q
+      - name: Execute core mathematical and analytical tests
+        run: python -m pytest -q --ignore=tests/test_app.py
+
+      - name: Execute web application tests
+        run: python -m pytest tests/test_app.py -q
 
       - name: Validate scenario CSV generation
         run: |
