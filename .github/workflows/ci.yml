@@ -1,0 +1,64 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python 3.14 Quality Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      MPLBACKEND: Agg
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Configure Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Verify dependency compatibility
+        run: python -m pip check
+
+      - name: Verify Python compilation
+        run: |
+          python -m compileall -q \
+            calculator.py \
+            main.py \
+            history.py \
+            visualization.py \
+            scenario_analysis.py \
+            scenario_visualization.py \
+            tests
+
+      - name: Execute automated tests
+        run: python -m pytest -q
+
+      - name: Validate scenario CSV generation
+        run: |
+          python scenario_analysis.py --output "$RUNNER_TEMP/scenarios.csv"
+
+      - name: Validate sensitivity heatmap generation
+        run: |
+          python scenario_visualization.py --chart heatmap --output "$RUNNER_TEMP/heatmap.png"
+
+      - name: Validate baseline comparison generation
+        run: |
+          python scenario_visualization.py --chart baseline --output "$RUNNER_TEMP/baseline.png"
