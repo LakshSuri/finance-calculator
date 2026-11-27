@@ -1,17 +1,21 @@
 # Finance Calculator
 
-### Financial Mathematics and Deterministic Scenario Analysis Laboratory
-
-[![Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml/badge.svg)](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/Python-3.14-blue)
-![Tests](https://img.shields.io/badge/Tests-225%20Passing-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-blue)
+[![Python 3.14](https://img.shields.io/badge/Python-3.14-blue)](https://docs.python.org/3.14/)
+[![Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-225%20Passing-brightgreen)](tests/)
 
 An interactive financial mathematics application for studying compound growth, periodic contributions, the time value of money, purchasing power, and sensitivity to hypothetical economic assumptions.
 
 The project combines a validated Python mathematical engine, a command-line application, an interactive Streamlit website, and reproducible analytical visualizations.
 
-## Project Overview
+**[Example Dataset](examples/example_scenarios.csv) · [Analytical Figures](examples/) · [Mathematical Framework](#mathematical-framework) · [Releases](https://github.com/LakshSuri/finance-calculator/releases) · [Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml) · [Security Policy](SECURITY.md)**
+
+## Overview
+
+| Interactive Workspaces | Standalone Visualizations | Example Scenarios | Recorded Passing Tests |
+|:---:|:---:|:---:|:---:|
+| 5 | 8 | 12 | 225 |
 
 | Component | Capability |
 |---|---|
@@ -27,19 +31,24 @@ The project combines a validated Python mathematical engine, a command-line appl
 
 ## Contents
 
-- Features
-- Interactive Application
-- Quick Start
-- Mathematical Framework
-- Scenario Analysis
-- Analytical Visualizations
-- Software Architecture
-- Testing and Validation
-- Security and Privacy
-- Model Limitations
-- Development Roadmap
-- Related Projects
-- License
+- [Features](#features)
+- [Interactive Application](#interactive-application)
+- [Quick Start](#quick-start)
+- [Mathematical Framework](#mathematical-framework)
+- [Mathematical Usage Examples](#mathematical-usage-examples)
+- [Scenario Analysis](#scenario-analysis)
+- [Analytical Visualizations](#analytical-visualizations)
+- [Software Architecture](#software-architecture)
+- [Repository Structure](#repository-structure)
+- [Technology Stack](#technology-stack)
+- [Testing and Validation](#testing-and-validation)
+- [Continuous Integration](#continuous-integration)
+- [Security and Privacy](#security-and-privacy)
+- [Model Limitations](#model-limitations)
+- [Project Evolution](#project-evolution)
+- [Development Roadmap](#development-roadmap)
+- [Related Projects](#related-projects)
+- [License](#license)
 
 ## Features
 
@@ -110,16 +119,18 @@ cd finance-calculator
 macOS or Linux:
 
 ```bash
-python3 -m venv .venv
+python3.14 -m venv .venv
 source .venv/bin/activate
 ```
 
 Windows PowerShell:
 
 ```powershell
-python -m venv .venv
+py -3.14 -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
+
+Windows compatibility has not been independently validated.
 
 ### Install Dependencies
 
@@ -139,13 +150,7 @@ python main.py
 python -m streamlit run app.py
 ```
 
-Open the local URL displayed in the terminal.
-
-The default local address is:
-
-```text
-http://localhost:8501
-```
+Open the local URL displayed in the terminal. The default local address is [http://localhost:8501](http://localhost:8501).
 
 ## Mathematical Framework
 
@@ -229,7 +234,7 @@ The original monthly accumulation and goal functions retain their nominal annual
 
 Combined projections use effective annual rates.
 
-Public calculation functions accept percentage inputs. Internal calculations convert percentages to decimal rates.
+Public financial calculation functions accept percentage inputs. Internal calculations convert percentages to decimal rates.
 
 ### 5. Combined Growth Projection
 
@@ -447,7 +452,8 @@ flowchart TD
     F --> B
     D --> B
     F --> G[CSV Exports]
-    F --> H[Scenario Visualizations]
+    H[Scenario Visualizations] --> F
+    C --> H
     H --> I[PNG Exports]
     J[Automated Test Suite] --> B
     J --> A
