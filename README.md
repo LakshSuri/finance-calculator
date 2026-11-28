@@ -9,7 +9,7 @@ An interactive financial mathematics application for studying compound growth, p
 
 The project combines a validated Python mathematical engine, a command-line application, an interactive Streamlit website, and reproducible analytical visualizations.
 
-**[Coding Journey — Portfolio Hub](https://github.com/LakshSuri/coding-journey) · [Example Dataset](examples/example_scenarios.csv) · [Analytical Figures](examples/) · [Mathematical Framework](#mathematical-framework) · [Releases](https://github.com/LakshSuri/finance-calculator/releases) · [Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml) · [Security Policy](SECURITY.md)**
+**[Coding Journey — Portfolio Hub](https://github.com/LakshSuri/coding-journey) · [Launch Streamlit application](https://finance-research-lab.streamlit.app) · [Example Dataset](examples/example_scenarios.csv) · [Analytical Figures](examples/) · [Mathematical Framework](#mathematical-framework) · [Releases](https://github.com/LakshSuri/finance-calculator/releases) · [Continuous Integration](https://github.com/LakshSuri/finance-calculator/actions/workflows/ci.yml) · [Security Policy](SECURITY.md)**
 
 ## Overview
 
@@ -86,6 +86,8 @@ The project combines a validated Python mathematical engine, a command-line appl
 ## Interactive Application
 
 The Streamlit application provides five analytical workspaces.
+
+[Open the hosted Finance Calculator](https://finance-research-lab.streamlit.app). The local installation instructions below remain available.
 
 | Workspace | Description |
 |---|---|
