@@ -1071,11 +1071,27 @@ def main():
     st.html(Path(__file__).resolve().parent / "static" / "laboratory.css")
 
     with st.sidebar:
-        st.caption("QUANTITATIVE FINANCE")
-        st.title("Finance Calculator")
-
-        st.caption(
-            "Financial Mathematics Laboratory"
+        st.markdown(
+            """
+            <div class="finance-brand">
+                <svg width="40" height="40" viewBox="0 0 40 40"
+                     xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" focusable="false">
+                    <rect width="40" height="40" rx="5" fill="#3C2C21"/>
+                    <rect x="10" y="6.5" width="20" height="27" rx="2.5"
+                          fill="none" stroke="#FF925F" stroke-width="1.7"/>
+                    <rect x="13.5" y="10" width="13" height="6" rx="1"
+                          fill="#FF925F" fill-opacity=".22" stroke="#FF925F" stroke-width="1"/>
+                    <path d="M14 21h2 M21 21h5 M14 26h2 M21 26h5 M14 30h2 M21 30h5"
+                          stroke="#FF925F" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <div class="finance-brand-text">
+                    <div class="laboratory-wordmark">FINANCE CALCULATOR</div>
+                    <div class="laboratory-subtitle">Financial Mathematics</div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
         )
 
         st.divider()

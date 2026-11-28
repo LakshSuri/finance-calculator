@@ -55,3 +55,10 @@
 @media (max-width: 650px) {
   [data-testid="stMainBlockContainer"] { padding-top: 2.5rem; }
 }
+
+/* Shared laboratory wordmark with a project-specific calculator mark. */
+.finance-brand { display:flex; align-items:center; gap:12px; }
+.finance-brand > svg { flex:0 0 40px; }
+.finance-brand-text { min-width:0; }
+.laboratory-wordmark { font:700 1.4rem 'Research Display', sans-serif; letter-spacing:.035em; line-height:1.12; color:#F1EFE7; }
+.laboratory-subtitle { font-size:.875rem; color:#c4c7b8; line-height:1.35; margin-top:.2rem; }
